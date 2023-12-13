@@ -7,12 +7,16 @@
 
 int main(void)
 {
+	int checkInputReceiver;
+
+	checkInputReceiver = isatty(STDIN_FILENO);
+
 	while (1)
 	{
 		size_t index = 0, i;
 		char buffer[256], str;
-
-		welcome();
+		if (checkInputReceiver == 1)
+			welcome();
 
 		while ((str = my_getchar()) != EOF && str != '\n')
 			buffer[index++] = str;
