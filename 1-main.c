@@ -25,7 +25,7 @@ int main(void)
 		if (str == -1)
 			return (0);
 
-		cmdn(buffer);
+		Anothercmdn(buffer);
 
 		for (i = 0; buffer[i]; i++)
 			buffer[i] = 0;
