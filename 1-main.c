@@ -15,6 +15,7 @@ int main(void)
 	{
 		size_t index = 0, i;
 		char buffer[256], str;
+
 		if (checkInputReceiver == 1)
 			welcome();
 
