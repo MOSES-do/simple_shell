@@ -1,1 +1,1 @@
-A simple shell project by team Moses and Itohan.
+0x16. C - Simple Shell
