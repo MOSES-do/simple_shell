@@ -1,34 +1,48 @@
 #include "main.h"
 
 /**
-* main - main function
-* Return: 0
-*/
+ * main - main function
+ * @argc: n number of arguments passed
+ * @argv: an array of arguments
+ * Return: 0
+ */
 
-int main(void)
+int main(int argc, char *argv[])
 {
-	int checkInputReceiver;
-
-	checkInputReceiver = isatty(STDIN_FILENO);
+	int checkInputPath;
+	(void)argc;
 
 	while (1)
 	{
-		size_t index = 0, i;
+		size_t index = 0;
 		char buffer[256], str;
 
-		if (checkInputReceiver == 1)
-			welcome();
+		checkInputPath = isatty(STDIN_FILENO);
 
-		while ((str = my_getchar()) != EOF && str != '\n')
-			buffer[index++] = str;
+		if (checkInputPath == 1)
+		{
+			welcome();
+			while ((str = customGetchar()) != EOF && str != '\n')
+				buffer[index++] = str;
+		}
+		else
+		{
+			while ((str = customGetchar()) != EOF)
+				buffer[index++] = str;
+			putchar('\n');
+		}
 
 		if (str == -1)
+		{
+			return (0);
+			putchar('\n');
+		}
+
+		if (strcmp(buffer, "exit") == 0)
 			return (0);
 
-		Anothercmdn(buffer);
-
-		for (i = 0; buffer[i]; i++)
-			buffer[i] = 0;
+		cmdn(buffer, argv);
 	}
 	return (0);
 }
+

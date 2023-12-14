@@ -10,9 +10,10 @@
 #define MAX_SIZE 1024
 
 int welcome(void);
-int cmdn(char *buffer);
+int cmdn(char *buffer, char *pgname[]);
+int checkPath(char *argv[], char *progname[]);
 int execFilePath(char *argv[]);
+int customGetchar(void);
 int my_getchar(void);
-int AnotherexecFilePath(char *argv[]);
-int Anothercmdn(char *buffer);
+
 #endif
