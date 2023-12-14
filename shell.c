@@ -60,7 +60,6 @@ int end(int read)
 {
 	if (read == -1)
 	{
-		printstdout("\n");
 		return (0);
 	}
 	return (0);
