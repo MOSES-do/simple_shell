@@ -12,9 +12,9 @@
 int _putchar(char c);
 void printstdout(const char *string);
 int welcome(void);
-int cmdn(char *buffer, char *pgname[]);
-int checkPath(char *argv[], char *progname[]);
-int execFilePath(char *argv[], char *pgname[]);
+int cmdn(char *buffer, char *pgname[], char **envp);
+int checkPath(char *argv[], char *progname[], char **env);
+int execFilePath(char *argv[], char *pgname[], char **env);
 int end(int);
 
 #endif

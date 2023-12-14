@@ -7,7 +7,7 @@
  */
 
 
-int execFilePath(char *argv[], char *progname[])
+int execFilePath(char *argv[], char *progname[], char **envp)
 {
 	pid_t pid;
 
@@ -15,7 +15,7 @@ int execFilePath(char *argv[], char *progname[])
 
 	if (pid == 0)
 	{
-		if(execve(argv[0], argv, NULL) == -1)
+		if(execve(argv[0], argv, envp) == -1)
 		{
 			perror(progname[0]);
 			exit(EXIT_FAILURE);

@@ -5,10 +5,10 @@
  * @progname: exe. program name
  * Return: 0
  */
-int checkPath(char *argv[], char *progname[])
+int checkPath(char *argv[], char *progname[], char **env)
 {
 	if (access(argv[0], F_OK) == 0)
-		execFilePath(argv, progname);
+		execFilePath(argv, progname, env);
 	else
 		write(STDOUT_FILENO, progname[0], strlen(progname[0]));
 	return (0);
@@ -20,7 +20,7 @@ int checkPath(char *argv[], char *progname[])
  * @pgname: exe. program name
  * Return: 0
  */
-int cmdn(char *buffer, char *pgname[])
+int cmdn(char *buffer, char *pgname[], char **envp)
 {
 	char *token, *tokens[64];
 	int count = 0, i = 0;
@@ -33,7 +33,7 @@ int cmdn(char *buffer, char *pgname[])
 		count++;
 	}
 	tokens[count] = NULL;
-	checkPath(tokens, pgname);
+	checkPath(tokens, pgname, envp);
 
 	for (i = 0; i < count; i++)
 		free(tokens[i]);

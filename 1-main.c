@@ -8,7 +8,7 @@
  */
 
 
-int main(int argc, char *argv[])
+int main(int argc, char *argv[], char **envp)
 {
 	int dataInputPath, read;
 	size_t len;
@@ -37,7 +37,7 @@ int main(int argc, char *argv[])
 			userInput[read - 1] = '\0';
 
 		if (read != -1)
-			cmdn(userInput, argv);
+			cmdn(userInput, argv, envp);
 
 		free(userInput);
 
