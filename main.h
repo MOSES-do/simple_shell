@@ -10,6 +10,7 @@
 #define MAX_SIZE 1024
 
 int _putchar(char c);
+void printstdout(const char *string);
 int welcome(void);
 int cmdn(char *buffer, char *pgname[]);
 int checkPath(char *argv[], char *progname[]);

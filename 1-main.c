@@ -1,4 +1,6 @@
 #include "main.h"
+#include <stdio.h>
+
 
 /**
  * main - main function
@@ -10,15 +12,16 @@
 int main(int argc, char *argv[])
 {
 	int checkInputPath;
+	char buffer[256];
 	(void)argc;
 
 	while (1)
 	{
 		size_t index = 0;
-		char buffer[256], str;
+		char str;
 
 		checkInputPath = isatty(STDIN_FILENO);
-
+		
 		if (checkInputPath == 1)
 		{
 			welcome();
@@ -29,19 +32,23 @@ int main(int argc, char *argv[])
 		{
 			while ((str = customGetchar()) != EOF)
 				buffer[index++] = str;
-			_putchar('\n');
+			printstdout("\n");
 		}
-
+		
 		if (str == -1)
 		{
 			return (0);
-			_putchar('\n');
+			printstdout("\n");
 		}
 
 		if (strcmp(buffer, "exit") == 0)
 			return (0);
 
 		cmdn(buffer, argv);
+
+		/*fflush(stdout);
+		for (index = 0; buffer[index]; ++index)
+			buffer[index] = 0;*/
 	}
 	return (0);
 }

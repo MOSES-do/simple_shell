@@ -46,7 +46,7 @@ int cmdn(char *buffer, char *pgname[])
  */
 int welcome(void)
 {
-	write(STDOUT_FILENO, "#cisfun ", 8);
+	printstdout("#cisfun ");
 	return (0);
 }
 
@@ -58,7 +58,7 @@ int welcome(void)
 int my_getchar(void)
 {
 	char status;
-
+	
 	return ((read(0, &status, 1) == 1) ? (unsigned char)status : EOF);
 }
 
