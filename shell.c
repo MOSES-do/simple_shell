@@ -2,7 +2,7 @@
 /**
  * checkPath - check if path exists
  * @argv: user generated tokens
- * @pgname: exe. program name
+ * @progname: exe. program name
  * Return: 0
  */
 int checkPath(char *argv[], char *progname[])
@@ -70,9 +70,7 @@ int customGetchar(void)
 {
 	int ch = my_getchar();
 
-	if (ch == EOF || ch == '\n')
-		return (ch);
-	else
+	if (!(ch == EOF || ch == '\n'))
 		putchar(ch);
 
 	return (ch);
