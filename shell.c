@@ -33,8 +33,8 @@ int cmdn(char *buffer, char *pgname[], char **envp)
 		count++;
 	}
 	tokens[count] = NULL;
-	checkPath(tokens, pgname, envp);
-
+	/*checkPath(tokens, pgname, envp);*/
+	execFilePath(tokens, pgname, envp);
 	for (i = 0; i < count; i++)
 		free(tokens[i]);
 	return (0);
