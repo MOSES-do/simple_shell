@@ -71,7 +71,7 @@ int customGetchar(void)
 	int ch = my_getchar();
 
 	if (!(ch == EOF || ch == '\n'))
-		putchar(ch);
+		_putchar(ch);
 
 	return (ch);
 }

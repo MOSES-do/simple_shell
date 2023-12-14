@@ -22,20 +22,20 @@ int main(int argc, char *argv[])
 		if (checkInputPath == 1)
 		{
 			welcome();
-			while ((str = customGetchar()) != EOF && str != '\n')
+			while ((str = my_getchar()) != EOF && str != '\n')
 				buffer[index++] = str;
 		}
 		else
 		{
 			while ((str = customGetchar()) != EOF)
 				buffer[index++] = str;
-			putchar('\n');
+			_putchar('\n');
 		}
 
 		if (str == -1)
 		{
 			return (0);
-			putchar('\n');
+			_putchar('\n');
 		}
 
 		if (strcmp(buffer, "exit") == 0)
