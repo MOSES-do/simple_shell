@@ -47,34 +47,22 @@ int cmdn(char *buffer, char *pgname[])
 int welcome(void)
 {
 	printstdout("#cisfun ");
+	fflush(stdout);
 	return (0);
 }
 
 /**
- * my_getchar - returns read function
- * Return: &status
+ * end - exit the shell on call
+ * @read: if value == -1, exit shell
+ * Return: reutnrs 0 on success
  */
-
-int my_getchar(void)
+int end(int read)
 {
-	char status;
-	
-	return ((read(0, &status, 1) == 1) ? (unsigned char)status : EOF);
+	if (read == -1)
+	{
+		printstdout("\n");
+		return (0);
+	}
+	return (0);
 }
-
-/**
- * customGetchar - modifies getline to read multiline characters
- * Return: returns read characters
- */
-int customGetchar(void)
-{
-	int ch = my_getchar();
-
-	if (!(ch == EOF || ch == '\n'))
-		_putchar(ch);
-
-	return (ch);
-}
-
-
 

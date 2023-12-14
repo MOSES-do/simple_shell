@@ -1,6 +1,4 @@
 #include "main.h"
-#include <stdio.h>
-
 
 /**
  * main - main function
@@ -9,47 +7,46 @@
  * Return: 0
  */
 
+
 int main(int argc, char *argv[])
 {
-	int checkInputPath;
-	char buffer[256];
+	int dataInputPath, read;
+	size_t len;
+	char *userInput;
 	(void)argc;
 
 	while (1)
 	{
-		size_t index = 0;
-		char str;
+		userInput = NULL;
+		len = 0;
 
-		checkInputPath = isatty(STDIN_FILENO);
-		
-		if (checkInputPath == 1)
-		{
+		dataInputPath = isatty(STDIN_FILENO);
+
+		if (dataInputPath == 1)
 			welcome();
-			while ((str = my_getchar()) != EOF && str != '\n')
-				buffer[index++] = str;
-		}
-		else
+
+		read = getline(&userInput, &len, stdin);
+
+		if (read >= 4 && strncmp(userInput, "exit", 4) == 0)
 		{
-			while ((str = customGetchar()) != EOF)
-				buffer[index++] = str;
-			printstdout("\n");
-		}
-		
-		if (str == -1)
-		{
+			free(userInput);
 			return (0);
-			printstdout("\n");
 		}
 
-		if (strcmp(buffer, "exit") == 0)
-			return (0);
+		if (userInput[read - 1] == '\n')
+			userInput[read - 1] = '\0';
 
-		cmdn(buffer, argv);
+		if (read != -1)
+			cmdn(userInput, argv);
 
-		/*fflush(stdout);
-		for (index = 0; buffer[index]; ++index)
-			buffer[index] = 0;*/
+		free(userInput);
+
+		if (read < 1)
+			return (end(read));
 	}
+	free(userInput);
+
 	return (0);
 }
+
 
