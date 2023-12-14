@@ -7,7 +7,7 @@
  */
 
 
-int execFilePath(char *argv[])
+int execFilePath(char *argv[], char *progname[])
 {
 	pid_t pid;
 
@@ -15,7 +15,11 @@ int execFilePath(char *argv[])
 
 	if (pid == 0)
 	{
-		execve(argv[0], argv, NULL);
+		if(execve(argv[0], argv, NULL) == -1)
+		{
+			perror(progname[0]);
+			exit(EXIT_FAILURE);
+		}
 	}
 	else
 		wait(NULL);

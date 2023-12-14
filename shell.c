@@ -8,9 +8,9 @@
 int checkPath(char *argv[], char *progname[])
 {
 	if (access(argv[0], F_OK) == 0)
-		execFilePath(argv);
+		execFilePath(argv, progname);
 	else
-		perror(progname[0]);
+		write(STDOUT_FILENO, progname[0], strlen(progname[0]));
 	return (0);
 }
 

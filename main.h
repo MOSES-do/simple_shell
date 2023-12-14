@@ -14,7 +14,7 @@ void printstdout(const char *string);
 int welcome(void);
 int cmdn(char *buffer, char *pgname[]);
 int checkPath(char *argv[], char *progname[]);
-int execFilePath(char *argv[]);
+int execFilePath(char *argv[], char *pgname[]);
 int end(int);
 
 #endif
