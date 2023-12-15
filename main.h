@@ -15,7 +15,7 @@ int welcome(void);
 int cmdn(char *buffer, char *pgname[], char **envp);
 int checkPath(char *argv[], char *progname[], char **env);
 int execFilePath(char *argv[], char *pgname[], char **env);
-int end(int);
+int end(int, char*);
 
 #endif
 

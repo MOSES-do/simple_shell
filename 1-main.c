@@ -1,4 +1,6 @@
 #include "main.h"
+#include <signal.h>
+#include <stdio.h>
 
 /**
  * main - main function
@@ -7,6 +9,10 @@
  * Return: 0
  */
 
+void sigintHandler(int signum) {
+    printf("Received SIGINT signal. Cleaning up and exiting.\n");
+    exit(signum);
+}
 
 int main(int argc, char *argv[], char **envp)
 {
@@ -14,7 +20,7 @@ int main(int argc, char *argv[], char **envp)
 	size_t len;
 	char *userInput;
 	(void)argc;
-
+	
 	while (1)
 	{
 		userInput = NULL;
@@ -41,8 +47,8 @@ int main(int argc, char *argv[], char **envp)
 
 		free(userInput);
 
-		if (read < 1)
-			return (end(read));
+		if (read < 1 || signal(SIGINT, sigintHandler))
+			return (end(read, userInput));
 	}
 	free(userInput);
 

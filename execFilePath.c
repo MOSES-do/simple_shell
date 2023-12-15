@@ -18,12 +18,12 @@ int execFilePath(char *argv[], char *progname[], char **envp)
 		if(execve(argv[0], argv, envp) == -1)
 		{
 			perror(progname[0]);
+			free(argv[0]);
 			exit(EXIT_FAILURE);
 		}
 	}
-	else
-		wait(NULL);
-
+	wait(NULL);
+	free(argv[0]);
 	return (0);
 }
 
