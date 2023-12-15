@@ -3,6 +3,8 @@
 /**
  * execFilePath - executes file path
  * @argv: arguments
+ * @progname: name of the programs .exe
+ * @envp: system environment variables
  * Return: 0
  */
 
@@ -15,16 +17,19 @@ int execFilePath(char *argv[], char *progname[], char **envp)
 
 	if (pid == 0)
 	{
-		if(execve(argv[0], argv, envp) == -1)
+		if (execve(argv[0], argv, envp) == -1)
 		{
 			perror(progname[0]);
-			free(argv[0]);
 			exit(EXIT_FAILURE);
 		}
 	}
-	wait(NULL);
-	free(argv[0]);
+	else
+		wait(NULL);
+
+
+
 	return (0);
 }
+
 
 
