@@ -28,7 +28,7 @@ ssize_t _getline(char **bufclone, size_t *n, FILE *fd)
 		CUR_LEN += c;
 		if (CUR_LEN == MAX_LEN)
 		{	NEW_LEN *= 2;
-			buffer = realloc(buffer, NEW_LEN);
+			buffer = _realloc(buffer, NEW_LEN);
 			if (buffer == NULL)
 			{
 				free(buffer);
