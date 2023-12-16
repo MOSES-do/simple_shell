@@ -27,8 +27,8 @@ int main(int argc, char *argv[], char **env)
 		if (dataInputPath == 1)
 			welcome();
 
-		read = getline(&userInput, &len, stdin);
-
+		read = _getline(&userInput, &len, stdin);
+		
 		if (read == -1)
 			return (end(read, userInput));
 
