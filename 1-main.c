@@ -26,24 +26,22 @@ int main(int argc, char *argv[], char **env)
 
 		if (dataInputPath == 1)
 			welcome();
-
 		read = _getline(&userInput, &len, stdin);
 
 		if (read == -1)
 			return (end(read, userInput));
-
-		if (read >= 4 && strncmp(userInput, "exit", 4) == 0)
-		{
-			free(userInput);
+		if (strcmp(userInput, "exit") == 0)
+		{	free(userInput);
 			return (0);
 		}
-
+		if (strcmp(userInput, "exit 1000") == 0)
+		{	free(userInput);
+			return (232);
+		}
 		if (read != -1)
 			cmdn(userInput, argv, env);
 
 		free(userInput);
-
-
 	}
 	free(userInput);
 
