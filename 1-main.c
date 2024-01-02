@@ -28,7 +28,7 @@ int main(int argc, char *argv[], char **env)
 			welcome();
 
 		read = _getline(&userInput, &len, stdin);
-		
+
 		if (read == -1)
 			return (end(read, userInput));
 
@@ -37,8 +37,6 @@ int main(int argc, char *argv[], char **env)
 			free(userInput);
 			return (0);
 		}
-		if (userInput[read - 1] == '\n')
-			userInput[read - 1] = '\0';
 
 		if (read != -1)
 			cmdn(userInput, argv, env);
@@ -51,6 +49,7 @@ int main(int argc, char *argv[], char **env)
 
 	return (0);
 }
+
 
 
 

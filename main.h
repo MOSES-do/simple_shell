@@ -14,9 +14,10 @@ void printstdout(const char *string);
 int welcome(void);
 int cmdn(char *buffer, char *pgname[], char **envp);
 int checkPath(char *argv[], char *progname[], char **env);
-int execFilePath(char *argv[], char *pgname[], char **env);
+int execFilePath(char *argv[], char *pgname[], char **env, char *);
 int end(int, char*);
 char *_realloc(char *buffer, size_t n);
 ssize_t _getline(char **bufclone, size_t *n, FILE *fd);
 #endif
+
 

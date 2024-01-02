@@ -38,4 +38,3 @@ char *_realloc(char *buffer, size_t n)
 
 	return (ptr);
 }
-
